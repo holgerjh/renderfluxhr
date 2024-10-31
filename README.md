@@ -3,7 +3,7 @@
 Helper script to render a flux helm-release in-cluster.
 
 ```
-Usage: ./build-hr.sh [-s NAMESPACE_SOURCECONTROLLER] [-n NAMESPACE] [-f VALUES] [-x HELMARGS] [-o OUTPUT] HELMRELEASE [TEMPLATE_RELEASE_NAME]
+Usage: ./render-hr.sh [-s NAMESPACE_SOURCECONTROLLER] [-n NAMESPACE] [-f VALUES] [-x HELMARGS] [-o OUTPUT] HELMRELEASE [TEMPLATE_RELEASE_NAME]
 
   NAMESPACE: Namespace of Helm release.
   NAMESPACE_SOURCECONTROLLER: Namespace of flux source controller. Defaults to "flux-system".
