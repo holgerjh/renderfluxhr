@@ -46,6 +46,13 @@ EOF
 exit 2
 }
 
+checkdeps() {
+  for dep in yq helm sed "$kubectl" tar
+  do
+    [ "$(which "$dep")" ] || err "Missing dependency '$dep'"
+  done
+}
+
 summarize_args() {
   displayed_namespace="$namespace"
   [ "$displayed_namespace" ] || displayed_namespace="$(kubectl config view --minify -o jsonpath='{..namespace}')"
@@ -116,6 +123,7 @@ render() {
 
   log "Rendering chart"
   log "helm template . -f values.yaml -f values-overlay.json " "${helmargs[@]}"
+  helm dependency build
   helm template . -f values.yaml -f values-overlay.json "${helmargs[@]}"
 
 }
@@ -141,6 +149,8 @@ export namespace_sourcecontroller
 
 [ "$KUBECTL" ] && kubectl="$KUBECTL"
 [ "$KUBECTLELEVATED" ] && kubectlelevated="$KUBECTLELEVATED"
+
+checkdeps
 
 while getopts "n:x:o:f:s:" arg; do
   case "$arg" in
