@@ -19,14 +19,14 @@ Usage: ./render-hr.sh [-s NAMESPACE_SOURCECONTROLLER] [-n NAMESPACE] [-f VALUES]
 
 
   Example: Render "my-hr" in current namespace
-    ./build-hr.sh my-hr
+    ./render-hr.sh my-hr
   
   Example: Render "my-hr" in current namespace but set/shadow some values as defined in "myValues.yaml"
-    ./build-hr.sh -f myValues.yaml my-hr
+    ./render-hr.sh -f myValues.yaml my-hr
   
   Example: Render "my-hr" in "foo" namespace and set release name to "MyReleaseName". Save output to "rendered.yaml".
-    ./build-hr.sh -o rendered.yaml -n foo my-hr "MyReleaseName"
+    ./render-hr.sh -o rendered.yaml -n foo my-hr "MyReleaseName"
 
   Example: Render "my-hr" in current namespace and set helm options "--render-subchart-notes" as well as disable fictional "ingress.enabled" key 
-    ./build-hr.sh -x --render-subchart-notes -x --set -x ingress.enabled=false -o rendered.yaml my-hr
+    ./render-hr.sh -x --render-subchart-notes -x --set -x ingress.enabled=false -o rendered.yaml my-hr
 ```
